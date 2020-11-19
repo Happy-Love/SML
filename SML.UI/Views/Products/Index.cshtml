@@ -1,0 +1,10 @@
+﻿@model IEnumerable<SML.Domain.Product>
+
+<h4>This is list of products</h4>
+@foreach (var product in Model)
+{
+   <p>@product.Title</p>
+   <p>@product.Description</p>
+   <p>@product.Price</p>
+  
+}
