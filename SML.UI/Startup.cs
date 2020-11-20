@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SML.Application.Interfaces.Repositories;
 using SML.Infrastructure.Identity;
-using SML.Infrastructure.Persistence;
+using SML.Infrastructure.Identity.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,8 @@ namespace SML.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddIdentityInfrastructure(Configuration);
-            services.AddPersistenceInfrastructure(Configuration);
             services.AddControllersWithViews();
         }
 

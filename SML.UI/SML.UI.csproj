@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SML.Domain\SML.Domain.csproj" />
     <ProjectReference Include="..\SML.Infrastructure.Identity\SML.Infrastructure.Identity.csproj" />
-    <ProjectReference Include="..\SML.Infrastructure.Persistence\SML.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

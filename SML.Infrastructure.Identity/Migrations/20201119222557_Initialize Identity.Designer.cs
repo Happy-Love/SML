@@ -10,7 +10,7 @@ using SML.Infrastructure.Identity.Context;
 namespace SML.Infrastructure.Identity.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20201119205946_Initialize Identity")]
+    [Migration("20201119222557_Initialize Identity")]
     partial class InitializeIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -233,9 +233,6 @@ namespace SML.Infrastructure.Identity.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -243,7 +240,6 @@ namespace SML.Infrastructure.Identity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("LastModified")
@@ -257,15 +253,14 @@ namespace SML.Infrastructure.Identity.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -325,7 +320,7 @@ namespace SML.Infrastructure.Identity.Migrations
                 {
                     b.HasOne("SML.Domain.Entities.ApplicationUser", "ApplicationUser")
                         .WithMany("products")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("ApplicationUser");
                 });

@@ -1,6 +1,6 @@
 ﻿@model SML.Domain.Product
 <h2>Регистрация нового продукта от пользователя Evgeny</h2>
-<form method="post" asp-controller="Products" asp-action="Create">
+<form method="post" asp-controller="Products" asp-action="Edit">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
         <label asp-for="Title"></label><br />
@@ -18,7 +18,7 @@
         <span asp-validation-for="Price"></span>
     </div>
     <div>
-        <input type="submit" value="Создать продукт" />
+        <input type="submit" value="Обновить продукт" />
     </div>
 
 </form>

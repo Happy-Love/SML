@@ -161,11 +161,10 @@ namespace SML.Infrastructure.Identity.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -175,8 +174,8 @@ namespace SML.Infrastructure.Identity.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
+                        name: "FK_Products_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -222,9 +221,9 @@ namespace SML.Infrastructure.Identity.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ApplicationUserId",
+                name: "IX_Products_UserId",
                 table: "Products",
-                column: "ApplicationUserId");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

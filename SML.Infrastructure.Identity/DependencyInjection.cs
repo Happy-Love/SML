@@ -3,8 +3,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SML.Application.Interfaces.Repositories;
 using SML.Domain.Entities;
 using SML.Infrastructure.Identity.Context;
+using SML.Infrastructure.Identity.Repository;
 using SML.Infrastructure.Identity.Validators;
 
 namespace SML.Infrastructure.Identity
@@ -32,6 +34,10 @@ namespace SML.Infrastructure.Identity
                 options.LoginPath = "/Login/Auth";
             }
             );
+
+            #region Repositories
+            services.AddScoped<ProductRepository>();
+            #endregion
         }
     }
 }
