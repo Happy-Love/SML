@@ -32,5 +32,5 @@ namespace SML.Infrastructure.Identity.Seeds
                 }
             }
         }
-}
+    }
 }

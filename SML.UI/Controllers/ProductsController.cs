@@ -137,7 +137,6 @@ namespace SML.UI.Controllers
             return ReturnToProducts();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult<Product>> Edit(int id, Product entity)
         {
             if (entity.Id != id)
