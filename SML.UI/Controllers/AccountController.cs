@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace SML.UI.Controllers
 {
-    [Authorize()]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -42,6 +41,7 @@ namespace SML.UI.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "User");
                     // установка куки
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
